@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pv-pod
+spec:
+  containers:
+  - name: container
+    image: redis
+    volumeMounts:
+    - name: ebs-pv
+      mountPath: /mount1
+  volumes:
+  - name : ebs-pv
+    persistentVolumeClaim:
+      claimName: ebs-pvc
